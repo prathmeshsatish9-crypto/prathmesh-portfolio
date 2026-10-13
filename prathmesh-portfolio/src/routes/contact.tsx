@@ -1,0 +1,8 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { Mail, ArrowUpRight, MapPin } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { PageIntro, SocialLinks } from "@/components/portfolio";
+import { portfolio } from "@/lib/portfolio";
+import { pageHead } from "@/lib/metadata";
+export const Route = createFileRoute("/contact")({ head: () => pageHead("Contact Prathmesh Shelar | Let’s Connect", "Connect with Prathmesh Shelar by email for internship opportunities, projects, and conversations about AI and data science."), component: Contact });
+function Contact() { return <><PageIntro label="Let's connect" title="Start a conversation" description="I'd love to connect about internship opportunities, practical projects, or a shared interest in AI and data science."/><section className="container-shell contact-details mt-8"><div><div className="contact-item"><h2>Email</h2><a href={`mailto:${portfolio.email}`} className="contact-email">{portfolio.email}</a></div><Button asChild className="mt-7 h-11"><a href={`mailto:${portfolio.email}`}><Mail/>Say hello <ArrowUpRight/></a></Button></div><div><div className="contact-item"><h2>Find me online</h2><div className="flex gap-6 text-sm"><SocialLinks/></div>{!portfolio.github && !portfolio.linkedin && <p className="mt-4 text-xs text-muted-foreground">Profile links haven’t been added yet.</p>}</div><div className="contact-item"><h2>Based in</h2><div className="social-link text-sm"><MapPin size={16}/>Ahilyanagar, Maharashtra, India</div></div></div></section></>; }

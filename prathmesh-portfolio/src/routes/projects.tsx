@@ -1,0 +1,8 @@
+import { useState } from "react";
+import { createFileRoute } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
+import { ProjectCard, PageIntro, ContactSection } from "@/components/portfolio";
+import { projects } from "@/lib/portfolio";
+import { pageHead } from "@/lib/metadata";
+export const Route = createFileRoute("/projects")({ head: () => pageHead("Projects | Prathmesh Shelar", "Explore clearly labeled spaces for Prathmesh Shelar’s future Python, data analysis, and machine learning projects."), component: Projects });
+function Projects() { const [category, setCategory] = useState("All projects"); const filtered = projects.filter(project => category === "All projects" || project.category === category); return <><PageIntro label="Ideas into practice" title="Projects in the making" description="Every project starts with a question. These clearly labeled placeholders are spaces for future work — no projects here are claimed as completed."/><section className="section container-shell pt-6"><div className="filter-bar" aria-label="Filter projects">{["All projects", "Data analysis", "Machine learning", "Python"].map(item => <Button key={item} variant={category === item ? "secondary" : "ghost"} aria-pressed={category === item} onClick={() => setCategory(item)}>{item}</Button>)}</div><div className="project-grid">{filtered.map(project => <ProjectCard key={project.id} project={project}/>)}</div></section><ContactSection/></>; }

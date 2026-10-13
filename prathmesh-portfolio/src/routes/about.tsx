@@ -1,0 +1,5 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { AboutSection, SkillsSection, EducationSection, LearningSection, ContactSection, PageIntro } from "@/components/portfolio";
+import { pageHead } from "@/lib/metadata";
+export const Route = createFileRoute("/about")({ head: () => pageHead("About Prathmesh Shelar | Education & Skills", "Discover Prathmesh’s education, Python and data analysis skills, and ongoing learning in AI and data science."), component: About });
+function About() { return <><PageIntro label="The person behind the code" title="A little about me" description="An engineering student driven by curiosity, practical problems, and the possibilities of artificial intelligence."/><AboutSection/><SkillsSection/><EducationSection/><LearningSection/><ContactSection/></>; }
